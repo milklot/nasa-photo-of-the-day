@@ -1,19 +1,28 @@
 import React from "react"
+import styled from 'styled-components'
+
+const Explanation = styled.p`
+	margin: 0% 10%;
+	font-size: 1.4rem;
+	background-color:lightgray;
+`
+const Copyright = styled.p`
+	margin: 1.6% 0%;
+	margin-bottom: 3%;
+	font-size: 2rem;
+	background-color:lightgray;
+`
 
 const Body = (props) => {	
 
-	const {titleTag, explanation, copyright, date} = props;
+	const { explanation, copyright } = props;
 	return (
 		<>
-		<div>
-			<h1>{titleTag}</h1>
-			<h3>{date}</h3>
-			<p>{explanation}</p>
-		</div>
+			<Explanation>{explanation}</Explanation>
 		<div className="footer">
-			<p>
+			<Copyright>
 				Copyright: {copyright}
-			</p>
+			</Copyright>
 		</div>
 		</>
 	)

@@ -4,6 +4,7 @@ import axios from 'axios';
 import "./index.css"
 import Photo from "./Photo"
 import Body from "./Body"
+import Header from "./Header";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
   const keyNum = 'sFAO8ZgDD247MdlDzhsItT4McB2SIHoTtG0xWy53';
 
 	useEffect(() => {
-		axios.get(`https://api.nasa.gov/planetary/apod?api_key=${keyNum}&date=2018-12-28`)
+		axios.get(`https://api.nasa.gov/planetary/apod?api_key=${keyNum}&date=2018-11-28`)
 		.then(response => setNasaData(response.data))
 		.catch(error => console.log('something went wrong: ', error));
 	}, []);
@@ -19,8 +20,9 @@ function App() {
 
   return (
     <div className="App">
+      <Header titleTag={nasaData.title} date={nasaData.date} />
       <Photo source={nasaData.url} altData={nasaData.title}/>
-      <Body titleTag={nasaData.title} explanation={nasaData.explanation} copyright={nasaData.copyright} date={nasaData.date}/>
+      <Body explanation={nasaData.explanation} copyright={nasaData.copyright}/>
     </div>
   );
 }
